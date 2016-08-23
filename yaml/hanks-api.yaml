@@ -1,0 +1,444 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Hanks Api Documents
+  contact:
+    name: tonykuo
+    email: webber.larch@gmail.com
+host: 'localhost:8080'
+basePath: /hanks-ap
+tags:
+  - name: 電子柵欄操作
+    description: Fence Controller
+  - name: 定位操作
+    description: Location Controller
+  - name: 測試頁面
+    description: Hello Controller
+  - name: REST 基本操作
+    description: Hello Rest Controller
+  - name: 手環操作
+    description: Ring Controll
+paths:
+  '/v1/user/{uid}/ring/{ringSN}/fence':
+    get:
+      tags:
+        - 電子柵欄操作
+      summary: '取得柵欄設定與狀態(多筆, 最多5筆)'
+      description: get fence data list
+      operationId: getFenceListUsingGET
+      consumes:
+        - application/json
+      produces:
+        - application/json;charset=UTF-8
+      parameters:
+        - name: uid
+          in: path
+          description: FETNET_UID
+          required: true
+          type: string
+        - name: ringSN
+          in: path
+          description: 手環序號
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+    post:
+      tags:
+        - 電子柵欄操作
+      summary: 建立電子柵欄
+      description: create fence data
+      operationId: addFenceUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - application/json;charset=UTF-8
+      parameters:
+        - in: body
+          name: fenceDTO
+          description: fenceDTO
+          required: true
+          schema:
+            $ref: '#/definitions/FenceDTO'
+        - name: uid
+          in: path
+          description: uid
+          required: true
+          type: string
+        - name: ringSN
+          in: path
+          description: ringSN
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseSuccessDTO'
+        '400':
+          description: Server Busy(Timeout) or Expired Action
+        '401':
+          description: 認證失敗
+        '500':
+          description: INTERNAL SERVICE ERROR
+  '/v1/user/{uid}/ring/{ringSN}/fence/{fenceNo}':
+    get:
+      tags:
+        - 電子柵欄操作
+      summary: 取得柵欄設定與狀態(單筆)
+      description: get fence data
+      operationId: getFenceUsingGET
+      consumes:
+        - application/json
+      produces:
+        - application/json;charset=UTF-8
+      parameters:
+        - name: uid
+          in: path
+          description: FETNET_UID
+          required: true
+          type: string
+        - name: ringSN
+          in: path
+          description: 手環序號
+          required: true
+          type: string
+        - name: fenceNo
+          in: path
+          description: 電子柵欄編號
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+  '/v1/user/{uid}/ring/{ringSN}/fence/{fenceNo}/delete':
+    post:
+      tags:
+        - 電子柵欄操作
+      summary: 刪除柵欄
+      description: delete fence data
+      operationId: deleteFenceUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - application/json;charset=UTF-8
+      parameters:
+        - name: uid
+          in: path
+          description: FETNET_UID
+          required: true
+          type: string
+        - name: ringSN
+          in: path
+          description: 手環序號
+          required: true
+          type: string
+        - name: fenceNo
+          in: path
+          description: 電子柵欄編號
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+  '/v1/user/{uid}/ring/{ringSN}/fence/{fenceNo}/update':
+    post:
+      tags:
+        - 電子柵欄操作
+      summary: 更新柵欄設定
+      description: update fence data list
+      operationId: updateFenceUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - application/json;charset=UTF-8
+      parameters:
+        - in: body
+          name: fdto
+          description: fdto
+          required: true
+          schema:
+            $ref: '#/definitions/FenceDTO'
+        - name: uid
+          in: path
+          description: FETNET_UID
+          required: true
+          type: string
+        - name: ringSN
+          in: path
+          description: 手環序號
+          required: true
+          type: string
+        - name: fenceNo
+          in: path
+          description: 電子柵欄編號
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+  '/v1/user/{uid}/ring/{ringSN}/location':
+    get:
+      tags:
+        - 定位操作
+      summary: 取得過去軌跡資訊
+      description: get Location History
+      operationId: getLocationHistoryUsingGET
+      consumes:
+        - application/json
+      produces:
+        - application/json;charset=UTF-8
+      parameters:
+        - name: uid
+          in: path
+          description: uid
+          required: true
+          type: string
+        - name: ringSN
+          in: path
+          description: ringSN
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+  '/v1/user/{uid}/ring/{ringSN}/profile':
+    get:
+      tags:
+        - 手環操作
+      summary: 取得手環資訊
+      description: get ring info
+      operationId: getRingInfoUsingGET
+      consumes:
+        - application/json
+      produces:
+        - application/json;charset=UTF-8
+      parameters:
+        - name: uid
+          in: path
+          description: user_id
+          required: true
+          type: string
+        - name: ringSN
+          in: path
+          description: bracelet_id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/RingInfoDTO'
+        '400':
+          description: Server Busy(Timeout) or Expired Action
+        '401':
+          description: 認證失敗
+        '500':
+          description: INTERNAL SERVICE ERROR
+  '/v1/user/{uid}/ring/{ringSN}/request/activemode/off':
+    post:
+      tags:
+        - 定位操作
+      summary: '要求切換主動追蹤:OFF'
+      description: stop active mode
+      operationId: stopActiveModeUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - application/json;charset=UTF-8
+      parameters:
+        - name: uid
+          in: path
+          description: uid
+          required: true
+          type: string
+        - name: ringSN
+          in: path
+          description: ringSN
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+  '/v1/user/{uid}/ring/{ringSN}/request/activemode/on':
+    post:
+      tags:
+        - 定位操作
+      summary: '要求切換主動追蹤:ON'
+      description: start active mode
+      operationId: startActiveModeUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - application/json;charset=UTF-8
+      parameters:
+        - name: uid
+          in: path
+          description: uid
+          required: true
+          type: string
+        - name: ringSN
+          in: path
+          description: ringSN
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+  '/v1/user/{uid}/ring/{ringSN}/request/gps':
+    post:
+      tags:
+        - 定位操作
+      summary: 即時定位(只會回一次)
+      description: get current position
+      operationId: getCurrentPositionUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - application/json;charset=UTF-8
+      parameters:
+        - name: uid
+          in: path
+          description: 使用者ID
+          required: true
+          type: string
+        - name: ringSN
+          in: path
+          description: 手環序號
+          required: true
+          type: string
+        - name: debug
+          in: query
+          description: debug flag
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseSuccessDTO'
+        '400':
+          description: Server Busy(Timeout) or Expired Action
+        '401':
+          description: 認證失敗
+        '500':
+          description: INTERNAL SERVICE ERROR
+definitions:
+  FenceDTO:
+    type: object
+    required:
+      - end_time
+      - latitude
+      - longitude
+      - radius
+      - report_rate
+      - ring_name
+      - start_time
+    properties:
+      ring_name:
+        type: string
+        example: ring_name
+        description: ring_name
+      longitude:
+        type: number
+        format: double
+        example: longitude(TODO)
+        description: longitude
+      latitude:
+        type: number
+        format: double
+        example: latitude(TODO)
+        description: latitude
+      radius:
+        type: integer
+        format: int32
+        example: radius(TODO)
+        description: radius
+      report_rate:
+        type: integer
+        format: int32
+        example: 10
+        description: '回傳頻率(10,15,60)'
+      start_time:
+        type: string
+        example: '15:00'
+        description: start time
+      end_time:
+        type: string
+        example: '18:00'
+        description: end time
+  ResponseSuccessDTO:
+    type: object
+    required:
+      - message
+      - status_code
+    properties:
+      status_code:
+        type: string
+        example: '000000'
+        description: '000000'
+      message:
+        type: string
+        example: success
+        description: success
+  DemoDTO:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+  RingInfo:
+    type: object
+    properties:
+      batter_power:
+        type: integer
+        format: int32
+      contact_number:
+        type: string
+      firmware_update_flag:
+        type: integer
+        format: int32
+      firmware_version:
+        type: string
+      mode:
+        type: string
+      provision_status:
+        type: string
+      ring_name:
+        type: string
+      ring_sn:
+        type: string
+  RingInfoDTO:
+    type: object
+    required:
+      - data
+      - message
+      - status_code
+    properties:
+      status_code:
+        type: string
+        example: '000000'
+        description: '000000'
+      data:
+        $ref: '#/definitions/RingInfo'
+      message:
+        type: string
+        example: success
+        description: success
