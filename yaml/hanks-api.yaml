@@ -8,22 +8,22 @@ info:
 host: 'localhost:8080'
 basePath: /hanks-ap
 tags:
-  - name: é›»å­æŸµæ¬„æ“ä½œ
+  - name: ¹q¤l¬]Äæ¾Ş§@
     description: Fence Controller
-  - name: å®šä½æ“ä½œ
+  - name: ©w¦ì¾Ş§@
     description: Location Controller
-  - name: æ¸¬è©¦é é¢
+  - name: ´ú¸Õ­¶­±
     description: Hello Controller
-  - name: REST åŸºæœ¬æ“ä½œ
+  - name: REST °ò¥»¾Ş§@
     description: Hello Rest Controller
-  - name: æ‰‹ç’°æ“ä½œ
+  - name: ¤âÀô¾Ş§@
     description: Ring Controll
 paths:
   '/v1/user/{uid}/ring/{ringSN}/fence':
     get:
       tags:
-        - é›»å­æŸµæ¬„æ“ä½œ
-      summary: 'å–å¾—æŸµæ¬„è¨­å®šèˆ‡ç‹€æ…‹(å¤šç­†, æœ€å¤š5ç­†)'
+        - ¹q¤l¬]Äæ¾Ş§@
+      summary: '¨ú±o¬]Äæ³]©w»Pª¬ºA(¦hµ§, ³Ì¦h5µ§)'
       description: get fence data list
       operationId: getFenceListUsingGET
       consumes:
@@ -38,7 +38,7 @@ paths:
           type: string
         - name: ringSN
           in: path
-          description: æ‰‹ç’°åºè™Ÿ
+          description: ¤âÀô§Ç¸¹
           required: true
           type: string
       responses:
@@ -48,8 +48,8 @@ paths:
             type: object
     post:
       tags:
-        - é›»å­æŸµæ¬„æ“ä½œ
-      summary: å»ºç«‹é›»å­æŸµæ¬„
+        - ¹q¤l¬]Äæ¾Ş§@
+      summary: «Ø¥ß¹q¤l¬]Äæ
       description: create fence data
       operationId: addFenceUsingPOST
       consumes:
@@ -81,14 +81,14 @@ paths:
         '400':
           description: Server Busy(Timeout) or Expired Action
         '401':
-          description: èªè­‰å¤±æ•—
+          description: »{ÃÒ¥¢±Ñ
         '500':
           description: INTERNAL SERVICE ERROR
   '/v1/user/{uid}/ring/{ringSN}/fence/{fenceNo}':
     get:
       tags:
-        - é›»å­æŸµæ¬„æ“ä½œ
-      summary: å–å¾—æŸµæ¬„è¨­å®šèˆ‡ç‹€æ…‹(å–®ç­†)
+        - ¹q¤l¬]Äæ¾Ş§@
+      summary: ¨ú±o¬]Äæ³]©w»Pª¬ºA(³æµ§)
       description: get fence data
       operationId: getFenceUsingGET
       consumes:
@@ -103,12 +103,12 @@ paths:
           type: string
         - name: ringSN
           in: path
-          description: æ‰‹ç’°åºè™Ÿ
+          description: ¤âÀô§Ç¸¹
           required: true
           type: string
         - name: fenceNo
           in: path
-          description: é›»å­æŸµæ¬„ç·¨è™Ÿ
+          description: ¹q¤l¬]Äæ½s¸¹
           required: true
           type: string
       responses:
@@ -119,8 +119,8 @@ paths:
   '/v1/user/{uid}/ring/{ringSN}/fence/{fenceNo}/delete':
     post:
       tags:
-        - é›»å­æŸµæ¬„æ“ä½œ
-      summary: åˆªé™¤æŸµæ¬„
+        - ¹q¤l¬]Äæ¾Ş§@
+      summary: §R°£¬]Äæ
       description: delete fence data
       operationId: deleteFenceUsingPOST
       consumes:
@@ -135,12 +135,12 @@ paths:
           type: string
         - name: ringSN
           in: path
-          description: æ‰‹ç’°åºè™Ÿ
+          description: ¤âÀô§Ç¸¹
           required: true
           type: string
         - name: fenceNo
           in: path
-          description: é›»å­æŸµæ¬„ç·¨è™Ÿ
+          description: ¹q¤l¬]Äæ½s¸¹
           required: true
           type: string
       responses:
@@ -151,8 +151,8 @@ paths:
   '/v1/user/{uid}/ring/{ringSN}/fence/{fenceNo}/update':
     post:
       tags:
-        - é›»å­æŸµæ¬„æ“ä½œ
-      summary: æ›´æ–°æŸµæ¬„è¨­å®š
+        - ¹q¤l¬]Äæ¾Ş§@
+      summary: §ó·s¬]Äæ³]©w
       description: update fence data list
       operationId: updateFenceUsingPOST
       consumes:
@@ -173,12 +173,12 @@ paths:
           type: string
         - name: ringSN
           in: path
-          description: æ‰‹ç’°åºè™Ÿ
+          description: ¤âÀô§Ç¸¹
           required: true
           type: string
         - name: fenceNo
           in: path
-          description: é›»å­æŸµæ¬„ç·¨è™Ÿ
+          description: ¹q¤l¬]Äæ½s¸¹
           required: true
           type: string
       responses:
@@ -189,8 +189,8 @@ paths:
   '/v1/user/{uid}/ring/{ringSN}/location':
     get:
       tags:
-        - å®šä½æ“ä½œ
-      summary: å–å¾—éå»è»Œè·¡è³‡è¨Š
+        - ©w¦ì¾Ş§@
+      summary: ¨ú±o¹L¥h­y¸ñ¸ê°T
       description: get Location History
       operationId: getLocationHistoryUsingGET
       consumes:
@@ -216,8 +216,8 @@ paths:
   '/v1/user/{uid}/ring/{ringSN}/profile':
     get:
       tags:
-        - æ‰‹ç’°æ“ä½œ
-      summary: å–å¾—æ‰‹ç’°è³‡è¨Š
+        - ¤âÀô¾Ş§@
+      summary: ¨ú±o¤âÀô¸ê°T
       description: get ring info
       operationId: getRingInfoUsingGET
       consumes:
@@ -243,14 +243,14 @@ paths:
         '400':
           description: Server Busy(Timeout) or Expired Action
         '401':
-          description: èªè­‰å¤±æ•—
+          description: »{ÃÒ¥¢±Ñ
         '500':
           description: INTERNAL SERVICE ERROR
   '/v1/user/{uid}/ring/{ringSN}/request/activemode/off':
     post:
       tags:
-        - å®šä½æ“ä½œ
-      summary: 'è¦æ±‚åˆ‡æ›ä¸»å‹•è¿½è¹¤:OFF'
+        - ©w¦ì¾Ş§@
+      summary: '­n¨D¤Á´«¥D°Ê°lÂÜ:OFF'
       description: stop active mode
       operationId: stopActiveModeUsingPOST
       consumes:
@@ -276,8 +276,8 @@ paths:
   '/v1/user/{uid}/ring/{ringSN}/request/activemode/on':
     post:
       tags:
-        - å®šä½æ“ä½œ
-      summary: 'è¦æ±‚åˆ‡æ›ä¸»å‹•è¿½è¹¤:ON'
+        - ©w¦ì¾Ş§@
+      summary: '­n¨D¤Á´«¥D°Ê°lÂÜ:ON'
       description: start active mode
       operationId: startActiveModeUsingPOST
       consumes:
@@ -303,8 +303,8 @@ paths:
   '/v1/user/{uid}/ring/{ringSN}/request/gps':
     post:
       tags:
-        - å®šä½æ“ä½œ
-      summary: å³æ™‚å®šä½(åªæœƒå›ä¸€æ¬¡)
+        - ©w¦ì¾Ş§@
+      summary: §Y®É©w¦ì(¥u·|¦^¤@¦¸)
       description: get current position
       operationId: getCurrentPositionUsingPOST
       consumes:
@@ -314,12 +314,12 @@ paths:
       parameters:
         - name: uid
           in: path
-          description: ä½¿ç”¨è€…ID
+          description: ¨Ï¥ÎªÌID
           required: true
           type: string
         - name: ringSN
           in: path
-          description: æ‰‹ç’°åºè™Ÿ
+          description: ¤âÀô§Ç¸¹
           required: true
           type: string
         - name: debug
@@ -335,7 +335,7 @@ paths:
         '400':
           description: Server Busy(Timeout) or Expired Action
         '401':
-          description: èªè­‰å¤±æ•—
+          description: »{ÃÒ¥¢±Ñ
         '500':
           description: INTERNAL SERVICE ERROR
 definitions:
@@ -373,7 +373,7 @@ definitions:
         type: integer
         format: int32
         example: 10
-        description: 'å›å‚³é »ç‡(10,15,60)'
+        description: '¦^¶ÇÀW²v(10,15,60)'
       start_time:
         type: string
         example: '15:00'
